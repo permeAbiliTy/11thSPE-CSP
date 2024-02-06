@@ -29,3 +29,14 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+/geometries/spe11a_GRID_5_1_5.GRDECL
+/geometries/spe11a_GRID_280_1_120.GRDECL
+/geometries/spe11a_MULTNUM_5_1_5.GRDECL
+/geometries/spe11a_MULTNUM_280_1_120.GRDECL
+/geometries/spe11a_structured.msh
+/geometries/spe11b_GRID_100_1_100.GRDECL
+/geometries/spe11b_GRID_840_1_120.GRDECL
+/geometries/spe11b_GRID_1000_1_1000.GRDECL
+/geometries/spe11b_MULTNUM_100_1_100.GRDECL
+/geometries/spe11b_MULTNUM_840_1_120.GRDECL
+/geometries/spe11b_MULTNUM_1000_1_1000.GRDECL

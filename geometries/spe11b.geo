@@ -15,3 +15,7 @@ scale_factor_x = 8400.0/lab_scale_size_x;
 scale_factor_y = 1200.0/lab_scale_size_y;
 
 Dilate {{0.0, 0.0, 0.0}, {scale_factor_x, scale_factor_y, 1.0}}{Point{:};}
+//+
+Show "*";
+//+
+Show "*";
