@@ -99,6 +99,9 @@ outFile.write("# temperature [°C],     pressure [Pa],   density [kg/m3],  visco
 # get the data
 for i in range(cmdArgs["n_temp"]):
     temperature = cmdArgs["min_temp"] + i * delta_temperature
+    # Below, the reference state IIR is selected, corresponding to
+    # "setting enthalpy to 200 kJ/kg and entropy to 1.0 kJ/(kg-K) for the saturated liquid at 0 °C".
+    # See https://refprop-docs.readthedocs.io/en/latest/GUI/Menu%20Commands/Options%20Menu/reference.html?highlight=IIR#reference-state
     query = {
         "Action": "Data",
         "Wide": "on",
@@ -109,7 +112,7 @@ for i in range(cmdArgs["n_temp"]):
         "PHigh": str(cmdArgs["max_press"]),
         "PInc": str(delta_pressure),
         "T": str(temperature),
-        "RefState": "DEF",
+        "RefState": "IIR",
         "TUnit": "C",
         "PUnit": "Pa",
         "DUnit": "kg/m3",
@@ -148,8 +151,8 @@ for i in range(cmdArgs["n_temp"]):
     thermCond = np.delete(values["Therm_Cond_WmK"], phaseBoundaryIndices)
     # transform unit (kJ/kg -> J/kg)
     enthalpy *= 1000
-    cv *=1e-3
-    cp *=1e-3
+    cv *= 1000
+    cp *= 1000
     for p, rho, mu, h, alpha, cev, cep in zip(pressure, density, viscosity, enthalpy,thermCond,cv,cp):
         outFile.write(f"{temperature:.11e}, {p:.11e}, {rho:.11e}, {mu:.11e}, {h:.11e}, {alpha:.11e}, {cev:.11e}, {cep:.11e} \n")
 print(f"A file {fileName} has been generated.")
